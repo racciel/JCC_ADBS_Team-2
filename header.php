@@ -1,6 +1,5 @@
 <?php 
-    session_start();
-    //require('connection.php');
+    require('connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +43,9 @@
 
     <div id="lista">
             <ul>
-                <li><a href="">Page 1</a></li>
-                <li><a href="">Page 2</a></li>
-                <li><a href="">Page 3</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
             </ul>
         </div>
     </div>
