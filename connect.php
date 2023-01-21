@@ -1,6 +1,6 @@
 <?php
 
-    // HIHIHIIHIHIHIHIHIHIi
+    // Ahoj AHoj AHoj AHoj
     // 161.53.120.224
     //$mysqli = new mysqli("rec.foi.hr:50432", "leader", "pr0j3ctJ((", "project");
          $dbhost = 'rec.foi.hr:50432';
