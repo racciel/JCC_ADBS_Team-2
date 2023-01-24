@@ -94,3 +94,40 @@
   .demo:hover {
     opacity: 1;
   }
+  /*///mojeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
+
+.box {
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  position: relative;
+  display: flex;
+  justify-content:center;
+
+}
+
+.box-content {
+  padding: 10px;
+
+}
+
+
+.box-text {
+  display: inline-block;
+  text-align: justify;
+  font-size: 20px;
+  vertical-align: top;
+  width: 100%;
+}
+
+.box-text .wrap {
+  padding: 5px;
+}
+
+.box-footer {
+  padding: 10px;
+  text-align: center;
+  background: #f1f1f1;
+}
+
+
