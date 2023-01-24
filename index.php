@@ -21,13 +21,15 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
 
                 while ($row = pg_fetch_row($response)) {
                 echo "$row[2] \n" . "</br>";
+                $var_post_id1 = $row[1];
                 }
                 ?>
 
             </div>
         </div>
         <div class="box-footer">
-            <div class="wrap">
+            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id1 ?>"'>
+
                 Learn More
             </div>
         </div>
@@ -44,12 +46,13 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
 
                     while ($row = pg_fetch_row($response)) {
                         echo "$row[2] \n" . "</br>";
+                        $var_post_id2 = $row[1];
                     }
                     ?>
                 </div>
             </div>
             <div class="box-footer">
-                <div class="wrap">
+                <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id2 ?>"'>
                     Learn More
                 </div>
             </div>
@@ -72,13 +75,14 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
 
                 while ($row = pg_fetch_row($response)) {
                     echo "$row[2] \n" . "</br>";
+                    $var_post_id3 = $row[1];
                 }
                 ?>
 
             </div>
         </div>
         <div class="box-footer">
-            <div class="wrap">
+            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id3 ?>"'>
                 Learn More
             </div>
         </div>
@@ -95,12 +99,13 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
 
                 while ($row = pg_fetch_row($response)) {
                     echo "$row[2] \n" . "</br>";
+                    $var_post_id4 = $row[1];
                 }
                 ?>
             </div>
         </div>
         <div class="box-footer">
-            <div class="wrap">
+            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id4 ?>"'>
                 Learn More
             </div>
         </div>
