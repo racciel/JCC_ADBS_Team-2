@@ -11,7 +11,7 @@
     //echo "$name, $surname, $username, $password, $address, $country, $city";
     $hash = hash('sha256', $password);
 
-    $result = pg_query($conn, "INSERT INTO Users VALUES('$username', '$city', '$country', '$hash', '$name', '$surname', '$address', 'TRUE', 'FALSE', NULL)");
+    $result = pg_query($conn, "INSERT INTO Users VALUES('$username', '$city', '$country', '$hash', '$name', '$surname', '$address', 'TRUE', NULL, NULL)");
 
     if($result)
         header('Location: index.php');

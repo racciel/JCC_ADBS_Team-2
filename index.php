@@ -28,7 +28,7 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
         </div>
         <div class="box-footer">
             <div class="wrap">
-                Lear More
+                Learn More
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
             </div>
             <div class="box-footer">
                 <div class="wrap">
-                    Lear More
+                    Learn More
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
         </div>
         <div class="box-footer">
             <div class="wrap">
-                Lear More
+                Learn More
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
         </div>
         <div class="box-footer">
             <div class="wrap">
-                Lear More
+                Learn More
             </div>
         </div>
     </div>
