@@ -7,7 +7,7 @@
     <form id="login" method="POST" action="login_check.php">
         <br><br>
             <label>Username:</label> <input type="text" id="username" name="username" required><br><br>
-            <label>Password:</label> <input type="password" id="pass" name="password" minlength="8" required><br><br><br>
+            <label>Password:</label> <input type="password" id="pass" name="password" minlength="3" required><br><br><br>
             <input type="submit" value="LOG IN">
         <br><br>
     </form>
