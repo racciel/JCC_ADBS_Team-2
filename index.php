@@ -14,8 +14,11 @@
         <div class="box-text">
             <div class="wrap">
                 <?php
+               //$conn = pg_connect("host=rec.foi.hr port=50432 dbname=project user=leader password=pr0j3ctJ((");
+
                 $response = pg_query($conn, "select rowa,post_id, substring(Post_description,1,700) 
-from( select  post_id, Post_description, row_number() over(order by post_id desc) as rowa
+from
+     ( select  post_id, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
 		where rowa = 1");
 
