@@ -55,7 +55,7 @@ Use this to check if your new user is added to the database
                 <li><a href="#">Explore blog</a></li>
                 <?php if (isset($_SESSION['username'])){ ?>
                     <li><a href="myBlog.php">My blog</a></li>
-                <?php } if(isset($_SESSION['username']) && $_SESSION['username'] == "Racciel") {// this has to be changed later to include the query data ?>
+                <?php } if(isset($_SESSION['username']) && $_SESSION['username'] == "Racciel" || $_SESSION['username'] == "admin") {// this has to be changed later to include the query data ?>
                 <li><a href="#">Manage users</a></li>
                 <li><a href="manageRoles.php">Manage roles</a></li>
                 <li><a href="managePermissions.php">Manage permissions</a></li>
