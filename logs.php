@@ -21,7 +21,7 @@ require('header.php');?>
 
                 if($result) {
                     echo('<table class="table josjedna">');
-                    echo('<tr><th scope="col"><label>Username</label></th><th scope="col"><label>Date and Time</label></th><th scope="col"><label>Code</label></th><th scope="col"><label>Description of code</label></th></tr>'); 
+                    echo('<tr><th scope="col"><label>Username</label></th><th scope="col"><label>Date and Time</label></th><th scope="col"><label>Code</label></th><th scope="col"><label>Description of code</label></th></tr>');
                     while ($row = pg_fetch_row($result)) {
                         echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td></tr>";
                     }

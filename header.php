@@ -61,7 +61,7 @@ Use this to check if your new user is added to the database
                 <li><a href="managePermissions.php">Manage permissions</a></li>
                 <li><a href="usersList.php">Users list</a></li>
                 <li><a href="logs.php">Logs</a></li>
-                <li><a href="#">Reports</a></li>
+                <li><a href="reports.php">Reports</a></li>
                     <?php } ?>
                 <li><a href="#">Some sort of info</a></li>
             </ul>
