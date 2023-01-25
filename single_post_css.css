@@ -53,5 +53,14 @@ p{
     font-size: 20px;
 }
 
+.menu {
+    display: none;
+}
 
+.menu.opened {
+    display: block;
+}
 
+.report{
+    text-align: right;
+}
