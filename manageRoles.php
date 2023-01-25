@@ -14,22 +14,33 @@ require('header.php');?>
         <div class="row">
             <div class="col-md-12">
             <div id="prijava" style="width=100%">
-
             <form id="login" method="POST" action="insert_role.php">
-                <label>Role will inherit permissions from role (integer needed): </label><input type="number" name="roleInherits" min="0" max="500"><br><br>
-                <label>Role name: </label><input type="text" name="roleName"><br><br>
+                <label>Role name: </label> <input type="text" name="roleName"><br><br>
+                <label>Based on: </label>
+                <!--<input id="roleInherit" name="roleInherit" type="text" multiple list="roles">-->
+                <select id="roles">
+                    <?php 
+                        $result = pg_query($conn, "SELECT * FROM role;");
+                        while ($row = pg_fetch_row($result)) {
+                            echo "<option value='$row[0]'>$row[2]</option>";
+                        }
+                    ?>
+                </select>
+                <input type="hidden" id="roleInherits" name="roleInherits">
                 <input type="submit" value="Add">
             </form>
 </div><br><br>
 <?php
-
+// Sill need to implement datatable
 $result = pg_query($conn, "SELECT * FROM role ORDER BY role_id DESC LIMIT 20;");
 
 if($result) {
     echo('<table class="table josjedna">');
     echo('<tr><th scope="col"><label>Role inherits permissions from role</label></th><th scope="col"><label>Role name</label></th><th scope="col"><label>Created at</label></th></tr>');
     while ($row = pg_fetch_row($result)) {
-        echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td></tr>";
+        $subresult = pg_query($conn, "SELECT * FROM role WHERE role_id = $row[1]");
+        $row2 = pg_fetch_row($subresult);
+        echo "<tr><td>$row2[2]</td><td>$row[2]</td><td>$row[3]</td></tr>";
     }
     echo('</table>');
 }
@@ -40,4 +51,5 @@ echo('<a href="index.php">Home page</a>')
         </div>
     </div>
 </div>
+
 <?php require('footer.php');?>
