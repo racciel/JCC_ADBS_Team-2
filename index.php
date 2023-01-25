@@ -102,7 +102,7 @@ from( select  post_id, Post_description, row_number() over(order by post_id desc
                     $var_post_id4 = $row[1];
                 }
                 ?>
-            </div>
+            </div>*
         </div>
         <div class="box-footer">
             <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id4 ?>"'>
