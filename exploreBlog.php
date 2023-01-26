@@ -4,6 +4,9 @@ session_start();
 require('header.php'); ?>
 <link rel="stylesheet" type="text/css" href="pocetna.css">
 
+<button style="text-align: center; margin: 5px; display: block" onclick="window.location.href ='exploreBlog.php'">New Random Blogs</button>
+
+
 <div class="box">
 
     <div class="box-content">
@@ -14,10 +17,18 @@ require('header.php'); ?>
                 <?php
                 //$conn = pg_connect("host=rec.foi.hr port=50432 dbname=project user=leader password=pr0j3ctJ((");
 
+                $response = pg_query($conn, "select max(post_id) from post");
+                while ($row = pg_fetch_row($response)) {
+
+                    $var_max = $row[0];
+                }
+                $number = rand(100010, $var_max);
+                //echo $number;
+
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 1");
+		where post_id = $number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -42,10 +53,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 2");
+		where post_id= $number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -68,10 +80,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 3");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -102,11 +115,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
             <div class="wrap">
                 <?php
                 //$conn = pg_connect("host=rec.foi.hr port=50432 dbname=project user=leader password=pr0j3ctJ((");
-
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 4");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -134,7 +147,7 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 5");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -157,10 +170,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 6");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -190,11 +204,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
             <div class="wrap">
                 <?php
                 //$conn = pg_connect("host=rec.foi.hr port=50432 dbname=project user=leader password=pr0j3ctJ((");
-
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 7");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -219,10 +233,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 8");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -245,10 +260,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 9");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -278,11 +294,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
             <div class="wrap">
                 <?php
                 //$conn = pg_connect("host=rec.foi.hr port=50432 dbname=project user=leader password=pr0j3ctJ((");
-
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 10");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -307,10 +323,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 11");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
@@ -332,10 +349,11 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
         <div class="box-text">
             <div class="wrap">
                 <?php
+                $number = rand(100010, $var_max);
                 $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
-		where rowa = 12");
+		where post_id=$number");
 
                 while ($row = pg_fetch_row($response)) {
                     echo "
