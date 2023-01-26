@@ -43,9 +43,9 @@ Use this to check if your new user is added to the database
                     <a href='login.php'>Sign in/Sign up</a>
                 </div>");
         else
-            echo("<div id='log'>
-                    <a href='logout.php'>Log out</a>
-                </div>");
+            echo("<div id='log'><br><a href='profile.php'>My profile</a><a href='logout.php'>&nbsp;&nbsp;&nbsp;&nbsp;Log out</a>
+                                </div>");
+
     ?>
 
 
