@@ -8,110 +8,31 @@ $var_userName =$_SESSION['username'];
 <h1>Welcome <?php echo $_SESSION['username'];?> </h1>
 <button class="createPost">Create New blog Post</button>
 
-<div class="box">
 
-    <div class="box-content">
+<div class="box" style="padding: 1%">
 
+    <?php
+    // Sill need to implement datatable
+    $result = pg_query($conn, "select lifespan, post_title, substring(Post_description,1,700) || ' ...', Substr(cast(date_edited as text),3,10),post_id from post p
+where user_name = '$var_userName';");
 
-        <div class="box-text">
-            <div class="wrap">
-                <?php
-                $response = pg_query($conn, "select rowa,post_id, substring(Post_description,1,700) 
-from( select  post_id, Post_description, row_number() over(order by post_id desc) as rowa
-		from post where user_name ='$var_userName' ) as deso
-		where rowa = 1");
+    if($result) {
+        echo('<table id="table_id" class="table josjedna display" >');
+        echo('<thead><tr><th scope="col"><label>Post Title</label></th><th scope="col"><label>Post text</label></th><th scope="col"><label>Created at</label></th><th scope="col"><label>Show post</label></th></tr></thead>');
+        echo('<tbody>');
+        while ($row = pg_fetch_row($result)) {
+            $created = substr($row[0], 2, 10);
+            $var_post_id =$row[4];
+            echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$created</td><td><a href='single_post.php?var_post_id=$var_post_id'>Show</a></td></tr>";
+        }
+        echo('</tbody>');
+        echo('</table>');
+    }
 
-                while ($row = pg_fetch_row($response)) {
-                    echo "$row[2] \n" . "</br>";
-                    $var_post_id1 = $row[1];
-                }
-                ?>
-
-            </div>
-        </div>
-        <div class="box-footer">
-            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id1 ?>"'>
-
-                Learn More
-            </div>
-        </div>
-    </div>
-
-    <div class="box-content">
-        <div class="box-text">
-            <div class="wrap">
-                <?php
-                $response = pg_query($conn, "select rowa,post_id, substring(Post_description,1,700) 
-from( select  post_id, Post_description, row_number() over(order by post_id desc) as rowa
-		from post where user_name ='$var_userName') as deso
-		where rowa = 2");
-
-                while ($row = pg_fetch_row($response)) {
-                    echo "$row[2] \n" . "</br>";
-                    $var_post_id2 = $row[1];
-                }
-                ?>
-            </div>
-        </div>
-        <div class="box-footer">
-            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id2 ?>"'>
-                Learn More
-            </div>
-        </div>
-    </div>
+    ?>
 
 </div>
-
-<div class="box">
-
-    <div class="box-content">
+<?php echo('<a href="index.php">Home page</a>'); ?>
+<?php require('footer.php');?>
 
 
-        <div class="box-text">
-            <div class="wrap">
-                <?php
-                $response = pg_query($conn, "select rowa,post_id, substring(Post_description,1,700) 
-from( select  post_id, Post_description, row_number() over(order by post_id desc) as rowa
-		from post where user_name ='$var_userName' ) as deso
-		where rowa = 3");
-
-                while ($row = pg_fetch_row($response)) {
-                    echo "$row[2] \n" . "</br>";
-                    $var_post_id1 = $row[1];
-                }
-                ?>
-
-            </div>
-        </div>
-        <div class="box-footer">
-            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id1 ?>"'>
-
-                Learn More
-            </div>
-        </div>
-    </div>
-
-    <div class="box-content">
-        <div class="box-text">
-            <div class="wrap">
-                <?php
-                $response = pg_query($conn, "select rowa,post_id, substring(Post_description,1,700) 
-from( select  post_id, Post_description, row_number() over(order by post_id desc) as rowa
-		from post where user_name ='$var_userName') as deso
-		where rowa = 4");
-
-                while ($row = pg_fetch_row($response)) {
-                    echo "$row[2] \n" . "</br>";
-                    $var_post_id2 = $row[1];
-                }
-                ?>
-            </div>
-        </div>
-        <div class="box-footer">
-            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id2 ?>"'>
-                Learn More
-            </div>
-        </div>
-    </div>
-
-</div>
