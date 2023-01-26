@@ -2,15 +2,15 @@
 require('connect.php');
 
 $user = $_POST['username'];
-$role = $_POST['givenRole'];
+$permission = $_POST['permission'];
 $assigned = $_POST['expired'];
 
-if($role == "-" OR $assigned == ""){
+if($permission == "-" OR $assigned == ""){
     header('Location: ' . $_SERVER["HTTP_REFERER"] );
     exit;
 }
 
-$query = "INSERT INTO users_roles VALUES('$user', $role, NOW(), '$assigned');";
+$query = "INSERT INTO Users_permission VALUES('$user', $permission, NOW(), '$assigned', 'FALSE');";
 
 echo $query;
 
@@ -18,7 +18,7 @@ echo $query;
 $result = pg_query($conn, $query);
 
 if($result)
-    header("Location: editUserRoles.php?username=$user");
+    header("Location: editUserPermissions.php?username=$user");
 else {
     header('Location: ' . $_SERVER["HTTP_REFERER"] );
     exit;

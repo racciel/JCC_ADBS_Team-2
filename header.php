@@ -1,4 +1,5 @@
 <?php 
+session_start();
     require('connect.php');
 /*
 Use this to check if your new user is added to the database

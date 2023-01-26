@@ -41,7 +41,7 @@ $result = pg_query($conn, "SELECT * FROM role ORDER BY role_id DESC;");
 
 if($result) {
     echo('<table id="table_id" class="table josjedna display">');
-    echo('<thead><tr><th scope="col"><label>Role name</label></th><th scope="col"><label>Role inherits permissions from role</label></th><th scope="col"><label>Created at</label></th></tr></thead>');
+    echo('<thead><tr><th scope="col"><label>Role name</label></th><th scope="col"><label>Role inherits permissions from role</label></th><th scope="col"><label>Created at</label></th><th></th></tr></thead>');
     echo('<tbody>');
     while ($row = pg_fetch_row($result)) {
         if($row[1] != ""){
@@ -51,7 +51,7 @@ if($result) {
         else {
             $row2 = "";
         }
-        echo "<tr><td>$row[2]</td><td>$row2[2]</td><td>$row[3]</td></tr>";
+        echo "<tr><td>$row[2]</td><td>$row2[2]</td><td>$row[3]</td><td><a href='editRole.php?id=$row[0]'>edit</a></td></tr>";
     }
     echo('</tbody>');
     echo('</table>');
