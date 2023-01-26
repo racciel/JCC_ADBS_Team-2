@@ -1,6 +1,10 @@
 <?php
 session_start();
-require('header.php');?>
+require('header.php');
+
+//$result = pg_query($conn, "DELETE FROM role WHERE role_name = 'member';");
+
+?>
 
 <link rel="stylesheet" type="text/css" href="login.css">
 <div class="navigacija">
@@ -18,7 +22,8 @@ require('header.php');?>
                 <label>Role name: </label> <input type="text" name="roleName"><br><br>
                 <label>Based on: </label>
                 <!--<input id="roleInherit" name="roleInherit" type="text" multiple list="roles">-->
-                <select id="roles">
+                <select id="roles" name="roleInherit">
+                    <option value="-">-</option>
                     <?php 
                         $result = pg_query($conn, "SELECT * FROM role;");
                         while ($row = pg_fetch_row($result)) {
@@ -26,7 +31,7 @@ require('header.php');?>
                         }
                     ?>
                 </select>
-                <input type="hidden" id="roleInherits" name="roleInherits">
+                <!--<input type="hidden" id="roleInherits" name="roleInherits">-->
                 <input type="submit" value="Add">
             </form>
 </div><br><br>
@@ -38,13 +43,18 @@ if($result) {
     echo('<table class="table josjedna">');
     echo('<tr><th scope="col"><label>Role inherits permissions from role</label></th><th scope="col"><label>Role name</label></th><th scope="col"><label>Created at</label></th></tr>');
     while ($row = pg_fetch_row($result)) {
-        $subresult = pg_query($conn, "SELECT * FROM role WHERE role_id = $row[1]");
-        $row2 = pg_fetch_row($subresult);
+        if($row[1] != ""){
+            $subresult = pg_query($conn, "SELECT * FROM role WHERE role_id = $row[1]");
+            $row2 = pg_fetch_row($subresult);
+        }
+        else {
+            $row2 = "";
+        }
         echo "<tr><td>$row2[2]</td><td>$row[2]</td><td>$row[3]</td></tr>";
     }
     echo('</table>');
 }
-echo('<a href="index.php">Home page</a>')
+echo('<a href="index.php">Home page</a>');
 ?>
 
             </div>
