@@ -8,7 +8,7 @@ $var_userName =$_SESSION['username'];
 <h1><br>Profile: <?php echo $_SESSION['username'];?> </h1> >
 <p style="text-align: center; ">
 <form action="blob/blobinsert.php" method="post" enctype="multipart/form-data" id="u16" name="u16">
-    
+
     <input type="file" name="file" id="file" multiple>
     <input type="submit" value="Upload Image" name="submit">
 </form>
