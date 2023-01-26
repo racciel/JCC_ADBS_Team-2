@@ -1,12 +1,13 @@
 <?php
 require('connect.php');
 
-$inher = $_POST['roleInherits'];
+$inher = $_POST['roleInherit'];
 $rname = $_POST['roleName'];
 
 if($_POST['roleInherit'] == "-")
     $inher = 'NULL';
 
+/*
     $res = pg_query($conn, "select * from role;");
     $i = pg_num_fields($res);
     for ($j = 0; $j < $i; $j++) {
@@ -17,7 +18,7 @@ if($_POST['roleInherit'] == "-")
         echo "storage length: " . pg_field_size($res, $j) . " bytes<br>";
         echo "field type: " . pg_field_type($res, $j) . " <br><br>";
     }
-
+*/
 
 $query = "INSERT INTO role VALUES(DEFAULT, $inher,'$rname', NOW());";
 echo $query;
