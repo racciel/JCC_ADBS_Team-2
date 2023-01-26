@@ -5,7 +5,7 @@ $var_userName =$_SESSION['username'];
 ?>
 <link rel="stylesheet" type="text/css" href="myBlogCSS.css">
 
-<h1>Welcome <?php echo $_SESSION['username'];?> </h1>
+<br><h1>Welcome <?php echo $_SESSION['username'];?> </h1>
 <button class="createPost">Create New blog Post</button>
 
 

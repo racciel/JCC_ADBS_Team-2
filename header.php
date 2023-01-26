@@ -56,7 +56,7 @@ Use this to check if your new user is added to the database
     <div id="lista">
         <!-- Here we will do a query to fech all permissions for a user and then we'll show the pages accordingly -->
         <ul>
-                <li><a href="exploreBlog.php">Explore blogs</a></li>
+                <li><a href="exploreBlog.php">Explore user's blogs</a></li>
                 <?php if (isset($_SESSION['username'])){ ?>
                     <li><a href="myBlog.php">My blog</a></li>
                 <?php } if(isset($_SESSION['username']) && $_SESSION['username'] == "Racciel" || $_SESSION['username'] == "admin") {// this has to be changed later to include the query data ?>
