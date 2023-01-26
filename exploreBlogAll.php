@@ -11,7 +11,9 @@ require('header.php');
 
     <?php
     // Sill need to implement datatable
-    $result = pg_query($conn, "select lifespan, post_title, substring(Post_description,1,700) || ' ...', Substr(cast(date_edited as text),3,10),post_id from post p;");
+    $result = pg_query($conn, "select lifespan, post_title, substring(Post_description,1,700) || ' ...', Substr(cast(date_edited as text),3,10),post_id from post p
+    where post_id > 100009;");
+
 
     if($result) {
         echo('<table id="table_id" class="table josjedna display" >');

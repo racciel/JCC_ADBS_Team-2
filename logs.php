@@ -17,7 +17,7 @@ require('header.php');?>
                 <?php
 
                 $result = pg_query($conn, "Select l.user_name, l.date_time, l.code, a.description
-                 from account_status a inner join logs l on  l.code= a.code;");
+                 from account_status a inner join logs l on  l.code= a.code order by l.date_time desc;");
 
                 if($result) {
                     echo('<table id="table_id" class="table josjedna display">');
