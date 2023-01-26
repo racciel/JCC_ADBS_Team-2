@@ -37,11 +37,12 @@ require('header.php');
 </div><br><br>
 <?php
 // Sill need to implement datatable
-$result = pg_query($conn, "SELECT * FROM role ORDER BY role_id DESC LIMIT 20;");
+$result = pg_query($conn, "SELECT * FROM role ORDER BY role_id DESC;");
 
 if($result) {
-    echo('<table class="table josjedna">');
-    echo('<tr><th scope="col"><label>Role inherits permissions from role</label></th><th scope="col"><label>Role name</label></th><th scope="col"><label>Created at</label></th></tr>');
+    echo('<table id="table_id" class="table josjedna display">');
+    echo('<thead><tr><th scope="col"><label>Role name</label></th><th scope="col"><label>Role inherits permissions from role</label></th><th scope="col"><label>Created at</label></th></tr></thead>');
+    echo('<tbody>');
     while ($row = pg_fetch_row($result)) {
         if($row[1] != ""){
             $subresult = pg_query($conn, "SELECT * FROM role WHERE role_id = $row[1]");
@@ -50,8 +51,9 @@ if($result) {
         else {
             $row2 = "";
         }
-        echo "<tr><td>$row2[2]</td><td>$row[2]</td><td>$row[3]</td></tr>";
+        echo "<tr><td>$row[2]</td><td>$row2[2]</td><td>$row[3]</td></tr>";
     }
+    echo('</tbody>');
     echo('</table>');
 }
 echo('<a href="index.php">Home page</a>');

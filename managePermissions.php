@@ -22,14 +22,16 @@ require('header.php');?>
 </div><br><br>
 <?php
 
-$result = pg_query($conn, "SELECT * FROM Permission ORDER BY Permission_type DESC LIMIT 20;");
+$result = pg_query($conn, "SELECT * FROM Permission ORDER BY Permission_type DESC;");
 
 if($result) {
-    echo('<table class="table josjedna">');
-    echo('<tr><th scope="col"><label>Permission title</label></th><th scope="col"><label>Description</label></th><th scope="col"><label>Created at</label></th></tr>');
+    echo('<table id="table_id" class="table josjedna display">');
+    echo('<thead><tr><th scope="col"><label>Permission title</label></th><th scope="col"><label>Description</label></th><th scope="col"><label>Created at</label></th></thead></tr>');
+    echo('<tbody>');
     while ($row = pg_fetch_row($result)) {
         echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td></tr>";
       }
+    echo('</tbody>');
     echo('</table>');
 }
 echo('<a href="index.php">Home page</a>')

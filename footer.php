@@ -2,7 +2,11 @@
 </main>
 
 </body>
-
+<script>
+    $(document).ready(function() {
+        $('#table_id').DataTable( {  } );
+    } );
+</script>
 </html>
 <?php 
 
