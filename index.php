@@ -271,58 +271,95 @@ from( select  post_id, user_name, post_title, Post_description, row_number() ove
 
 </div>
 
-<div class="box-content">
-    <div class="box-text">
-        <div class="wrap">
-            <?php
-            $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
+
+<div class="box">
+
+    <div class="box-content">
+
+
+        <div class="box-text">
+            <div class="wrap">
+                <?php
+                //$conn = pg_connect("host=rec.foi.hr port=50432 dbname=project user=leader password=pr0j3ctJ((");
+
+                $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
+from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
+		from post ) as deso
+		where rowa = 10");
+
+                while ($row = pg_fetch_row($response)) {
+                    echo "
+                    <h2><br>$row[3] \n </h2>
+                    <br><label>Author: </label>$row[2] \n
+                    <br>$row[4] \n". "</br>";
+                    $var_post_id1 = $row[1];
+                }
+                ?>
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id1 ?>"'>
+
+                Learn More
+            </div>
+        </div>
+    </div>
+
+    <div class="box-content">
+        <div class="box-text">
+            <div class="wrap">
+                <?php
+                $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
 		where rowa = 11");
 
-            while ($row = pg_fetch_row($response)) {
-                echo "
+                while ($row = pg_fetch_row($response)) {
+                    echo "
                     <h2><br>$row[3] \n </h2>
                     <br><label>Author: </label>$row[2] \n
                     <br>$row[4] \n". "</br>";
-                $var_post_id11 = $row[1];
-            }
-            ?>
+                    $var_post_id2 = $row[1];
+                }
+                ?>
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id2 ?>"'>
+                Learn More
+            </div>
         </div>
     </div>
-    <div class="box-footer">
-        <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id11 ?>"'>
-            Learn More
-        </div>
-    </div>
-</div>
-<div class="box-content">
-    <div class="box-text">
-        <div class="wrap">
-            <?php
-            $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
+
+    <div class="box-content">
+        <div class="box-text">
+            <div class="wrap">
+                <?php
+                $response = pg_query($conn, "select rowa,post_id,user_name, post_title, substring(Post_description,1,500)  
 from( select  post_id, user_name, post_title, Post_description, row_number() over(order by post_id desc) as rowa
 		from post ) as deso
 		where rowa = 12");
 
-            while ($row = pg_fetch_row($response)) {
-                echo "
+                while ($row = pg_fetch_row($response)) {
+                    echo "
                     <h2><br>$row[3] \n </h2>
                     <br><label>Author: </label>$row[2] \n
                     <br>$row[4] \n". "</br>";
-                $var_post_id12 = $row[1];
-            }
-            ?>
+                    $var_post_id3 = $row[1];
+                }
+                ?>
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id3 ?>"'>
+                Learn More
+            </div>
         </div>
     </div>
-    <div class="box-footer">
-        <div class="wrap" onclick='window.location.href ="single_post.php?var_post_id=<?php echo $var_post_id12 ?>"'>
-            Learn More
-        </div>
-    </div>
-</div>
 
 </div>
+
 
 
 
