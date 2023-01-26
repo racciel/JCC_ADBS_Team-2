@@ -19,7 +19,7 @@
         echo "<ol>";
         while($row = pg_fetch_row($result)) {
             //echo $row[1];
-            echo "<listyle='all: unset;'>".$row[4]." <a style='color:lightgrey' href='remove_role.php?username=$username&permission=$row[1]'>remove</a></li><br>";
+            echo "<listyle='all: unset;'>".$row[4]." <a style='color:lightgrey' href='remove_role.php?username=$username&roleId=$row[1]'>remove</a></li><br>";
         }
         echo "</ol>";
     }

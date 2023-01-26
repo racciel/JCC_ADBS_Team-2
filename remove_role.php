@@ -2,11 +2,11 @@
 require('connect.php');
 
 $user = $_GET['username'];
-$role = $_GET['role'];
+$role = $_GET['roleId'];
 
 $query = "DELETE FROM Users_roles WHERE user_name = '$user' AND role_id = $role;";
 
-//echo $query;
+echo $query;
 
 $result = pg_query($conn, $query);
 
