@@ -17,14 +17,16 @@ require('header.php');?>
                 <?php
 
                 $result = pg_query($conn, "Select l.user_name, l.date_time, l.code, a.description
-                 from account_status a inner join logs l on  l.code= a.code LIMIT 50;");
+                 from account_status a inner join logs l on  l.code= a.code;");
 
                 if($result) {
-                    echo('<table class="table josjedna">');
-                    echo('<tr><th scope="col"><label>Username</label></th><th scope="col"><label>Date and Time</label></th><th scope="col"><label>Code</label></th><th scope="col"><label>Description of code</label></th></tr>');
+                    echo('<table id="table_id" class="table josjedna display">');
+                    echo('<thead><tr><th scope="col"><label>Username</label></th><th scope="col"><label>Date and Time</label></th><th scope="col"><label>Code</label></th><th scope="col"><label>Description of code</label></th></tr></thead>');
+                    echo('<tbody>');
                     while ($row = pg_fetch_row($result)) {
                         echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td></tr>";
                     }
+                    echo('</tbody>');
                     echo('</table>');
                 }
                 echo('<a href="index.php">Home page</a>')
