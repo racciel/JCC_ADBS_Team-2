@@ -17,7 +17,7 @@ require('header.php');?>
                     <?php
 
                     $result = pg_query($conn, "Select p.user_name, p.post_title, r.created_at, r.code, c.description
-                 from report_log r inner join report_code c on r.code= c.code inner join post p on p.post_id=r.post_id LIMIT 50;");
+                 from report_log r inner join report_code c on r.code= c.code inner join post p on p.post_id=r.post_id;");
 
                     if($result) {
                         echo('<table id="table_id" class="table josjedna display">');

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require('header.php');
 
 //$result = pg_query($conn, "DELETE FROM role WHERE role_name = 'member';");
