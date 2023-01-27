@@ -5,7 +5,27 @@ $var_userName =$_SESSION['username'];
 ?>
 <link rel="stylesheet" type="text/css" href="myBlogCSS.css">
 
-<h1><br>Profile: <?php echo $_SESSION['username'];?> </h1>
+<h1><br>Profile: <?php echo $var_userName; ?> </h1>
+
+<?php
+
+$res = pg_query($conn, "SELECT profilepicture FROM users where user_name = '$var_userName'");
+$raw = pg_fetch_result($res, 'profilepicture');
+$raw =pg_unescape_bytea($raw);
+
+//header('Content-Type: image/jpeg');
+//echo ($raw);
+$contents = $raw;
+// Get the bytes from the created image.
+$base64 = base64_encode($contents);
+?>
+
+
+<div style=" padding: 5px; text-align: center";>
+<img src="data:image/png;base64,<?php echo $base64; ?>" alt="" />
+</div>
+
+
 <div style="text-align: center;">
 
 
@@ -18,10 +38,7 @@ $var_userName =$_SESSION['username'];
 
 </div>
 <div class="navigacija">
-    <div class="klasa navigation">
-        <div class="container manjeod">
-        </div>
-    </div>
+
     <h2> <?php echo $_SESSION['username'];?> 's information</h2>
     <div class="album py-4 bg-light pozadina">
         <div class="container">
@@ -39,6 +56,7 @@ $var_userName =$_SESSION['username'];
                         }
                         echo('</table>');
                     }
+
                     ?>
 
                 </div>

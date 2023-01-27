@@ -2,7 +2,7 @@
 session_start();
 include '../connect.php';
 
-if(isset($_FILES) === true){
+if(isset($_FILES['file']) === true){
 
     $var_userName =$_SESSION['username'];
     $pokus = $_FILES['file'];
@@ -27,15 +27,7 @@ if(isset($_FILES) === true){
 
     //pg_close($conn);
 
-
-
-
-    //$result ="UPDATE Users SET ProfilePicture = '$file' WHERE user_name ='$var_userName';";
-       // pg_query($conn,$result);
-
-
-
-    echo "Uspech Insert";
+    //echo "Uspech Insert";
 
     //$res = pg_query($conn, "SELECT ProfilePicture FROM users  where user_name = '$var_userName';");
 
@@ -51,7 +43,7 @@ if(isset($_FILES) === true){
     fclose($img);
 
     //pg_close($conn);
-    echo "Uspech Download";
+   // echo "Uspech Download";
 
 
 // Convert to binary and send to the browser
@@ -60,10 +52,11 @@ if(isset($_FILES) === true){
     $raw = pg_fetch_result($res, 'profilepicture');
 
 // Convert to binary and send to the browser
-    //header('Content-type: image/jpeg');
-   // echo pg_unescape_bytea($raw);
+    //header("Content-Type: image/jpeg");
+    //echo pg_unescape_bytea($raw);
 
-    header("location: ../profile.php");
+
+        header("location: ../profile.php");
 
 }else{
     //alert(data);
