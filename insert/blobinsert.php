@@ -1,1 +1,70 @@
 <?php
+session_start();
+include '../connect.php';
+
+if(isset($_FILES) === true){
+
+    $var_userName =$_SESSION['username'];
+    $pokus = $_FILES['file'];
+
+    //$file_name = "woman.jpg";
+
+    $file_name = $_FILES["file"]["tmp_name"];;
+    /*
+    foreach($_FILES["file"]["tmp_name"] as $file) {
+        $img = fopen($file_name, 'r') or die("cannot read image\n");
+        $data = fread($img, filesize($file_name));
+    }
+    */
+    $img = fopen($file_name, 'r') or die("cannot read image\n");
+    $data = fread($img, filesize($file_name));
+
+    $es_data = pg_escape_bytea($data);
+    fclose($img);
+
+    $query = "UPDATE Users SET ProfilePicture = '$es_data' WHERE user_name ='$var_userName';";
+    pg_query($conn, $query);
+
+    //pg_close($conn);
+
+
+
+
+    //$result ="UPDATE Users SET ProfilePicture = '$file' WHERE user_name ='$var_userName';";
+       // pg_query($conn,$result);
+
+
+
+    echo "Uspech Insert";
+
+    //$res = pg_query($conn, "SELECT ProfilePicture FROM users  where user_name = '$var_userName';");
+
+    $query = "SELECT ProfilePicture FROM users  where user_name = '$var_userName'";
+    $res = pg_query($conn, $query) or die (pg_last_error($con));
+
+    $data = pg_fetch_result($res, 'profilepicture');
+    $unes_image = pg_unescape_bytea($data);
+
+    $file_name = "woman2.jpg";
+    $img = fopen($file_name, 'wb') or die("cannot open image\n");
+    fwrite($img, $unes_image) or die("cannot write image data\n");
+    fclose($img);
+
+    //pg_close($conn);
+    echo "Uspech Download";
+
+
+// Convert to binary and send to the browser
+    $res = pg_query("SELECT ProfilePicture(data, 'base64') AS data FROM users user_name = '$var_userName'");
+    $raw = pg_fetch_result($res, 'data');
+
+// Convert to binary and send to the browser
+    header('Content-type: image/jpeg');
+    echo base64_decode($raw);
+
+
+}else{
+    //alert(data);
+    echo "Neuspech, neboli zadané všetky dáta";
+}
+?>
