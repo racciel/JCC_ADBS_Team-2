@@ -11,7 +11,7 @@ $query = "DELETE FROM Users_permission WHERE user_name = '$user' AND permission_
 $result = pg_query($conn, $query);
 
 if($result)
-    header("Location: editUserPermission.php?username=$user");
+    header("Location: editUserPermissions.php?username=$user");
 else {
     header('Location: ' . $_SERVER["HTTP_REFERER"] );
     exit;

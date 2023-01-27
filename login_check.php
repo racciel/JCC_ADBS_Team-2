@@ -11,13 +11,20 @@
     if($result) {
         if(pg_num_rows($result) != 0){
             //here last_online atribut is updated on user for each log in
-            $result = pg_query($conn, "UPDATE Users SET last_online = Now() WHERE user_name = '$username';");
+            $row = pg_fetch_row($result);
+            if($row[7] == "f") {
+                $result = pg_query($conn, "UPDATE Users SET last_online = Now() WHERE user_name = '$username';");
 
-            session_start();
-            $_SESSION['username'] = $username;
-            session_create_id();
-            session_commit();
-            header('Location: index.php');
+                session_start();
+                $_SESSION['username'] = $username;
+                session_create_id();
+                session_commit();
+                header('Location: index.php');
+            }
+            else {
+                header('Location: ' . $_SERVER["HTTP_REFERER"] );
+                exit;
+            }
         }
         else {
             header('Location: ' . $_SERVER["HTTP_REFERER"] );
