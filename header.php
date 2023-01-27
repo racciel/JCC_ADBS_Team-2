@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    require('connect.php');
+require('connect.php');
     $result = "";
 //Use this to check if your new user is added to the database
     /*
@@ -143,7 +143,7 @@ session_start();
                     }
                 } 
                 ?>
-                <li><a href="ourInfo.php">Some sort of info</a></li>
+                <li><a href="ourInfo.php">Contact us</a></li>
             </ul>
         </div>
     </div>
