@@ -80,7 +80,7 @@ $base64 = base64_encode($contents);
                         <?php
 
                         $result = pg_query($conn, "Select l.user_name, l.date_time, l.code, a.description
-                 from account_status a inner join logs l on  l.code= a.code where l.user_name = '$var_userName'");
+                 from account_status a inner join logs l on  l.code= a.code where l.user_name = '$var_userName' order by l.date_time desc");
 
                         if($result) {
                             echo('<table class="table josjedna">');
