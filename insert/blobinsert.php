@@ -40,7 +40,7 @@ if(isset($_FILES) === true){
     //$res = pg_query($conn, "SELECT ProfilePicture FROM users  where user_name = '$var_userName';");
 
     $query = "SELECT ProfilePicture FROM users  where user_name = '$var_userName'";
-    $res = pg_query($conn, $query) or die (pg_last_error($con));
+    $res = pg_query($conn, $query) or die (pg_last_error($conn));
 
     $data = pg_fetch_result($res, 'profilepicture');
     $unes_image = pg_unescape_bytea($data);
