@@ -45,7 +45,7 @@ if(isset($_FILES) === true){
     $data = pg_fetch_result($res, 'profilepicture');
     $unes_image = pg_unescape_bytea($data);
 
-    $file_name = "woman2.jpg";
+    $file_name = "test_image.jpg";
     $img = fopen($file_name, 'wb') or die("cannot open image\n");
     fwrite($img, $unes_image) or die("cannot write image data\n");
     fclose($img);
@@ -55,13 +55,15 @@ if(isset($_FILES) === true){
 
 
 // Convert to binary and send to the browser
-    $res = pg_query("SELECT ProfilePicture(data, 'base64') AS data FROM users user_name = '$var_userName'");
-    $raw = pg_fetch_result($res, 'data');
+    //$res = pg_query("SELECT ProfilePicture(profilepicture, 'base64') AS data FROM users where user_name = '$var_userName'");
+    $res = pg_query($conn, "SELECT profilepicture FROM users where user_name = '$var_userName'");
+    $raw = pg_fetch_result($res, 'profilepicture');
 
 // Convert to binary and send to the browser
-    header('Content-type: image/jpeg');
-    echo base64_decode($raw);
+    //header('Content-type: image/jpeg');
+   // echo pg_unescape_bytea($raw);
 
+    header("location: ../profile.php");
 
 }else{
     //alert(data);
