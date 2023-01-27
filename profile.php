@@ -22,7 +22,7 @@ $base64 = base64_encode($contents);
 
 
 <div style=" padding: 5px; text-align: center";>
-<img src="data:image/png;base64,<?php echo $base64; ?>" alt="" />
+<img src="data:image/png;base64,<?php echo $base64; ?>" alt=""  width="400" height="400"/>
 </div>
 
 
